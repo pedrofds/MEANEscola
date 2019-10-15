@@ -1,0 +1,102 @@
+<!-- Title group  -->
+<div class="title-group">
+  <h1 class="mat-h1">Edita Funcionário</h1>
+  <mat-divider fxFlex="1 0"></mat-divider>
+</div>
+
+<!-- Form -->
+<div class="inner-wrapper">
+  <form [formGroup]="funcionarioForm" (ngSubmit)="updateFuncionarioForm()" #resetFuncionarioForm="ngForm" novalidate>
+    <!-- Left block -->
+    <mat-card>
+      <div class="controlers-wrapper">
+        <!-- Name -->
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Nome do Funcionário" formControlName="funcionario_name">
+          <mat-error *ngIf="handleError('funcionario_name', 'required')">
+            Você deve fornecer um <strong>nome para o funcionário</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Email -->
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email do Funcionario" formControlName="funcionario_email">
+          <mat-error *ngIf="handleError('funcionario_email', 'required')">
+            Você deve fornecer um <strong>email para o funcionário</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Senha" formControlName="senha">
+          <mat-error *ngIf="handleError('senha', 'required')">
+            Você deve fornecer uma <strong>senha para o funcionário</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Carco -->
+        <mat-form-field>
+          <mat-label>Cargo</mat-label>
+          <mat-select [(value)]="selected" formControlName="cargo">
+            <mat-option [value]="cargoinArray" *ngFor="let cargoinArray of CargoinArray">{{cargoinArray}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="handleError('cargo', 'required')">
+            Cargo é requerido
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </mat-card>
+
+    <!-- Right block -->
+    <mat-card>
+      <div class="controlers-wrapper">
+        <!-- Adicionar assuntos -->
+        <mat-form-field class="multiple-items">
+          <mat-chip-list #chipList>
+            <mat-chip *ngFor="let numeroTelefone of numeroTelefone" [selectable]="selectable" [removable]="removable"
+              (removed)="remove(numeroTelefone)">
+              {{numeroTelefone.name}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Adicionar os telefones para contato" [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+              (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+          <i class="material-icons tooltip-info" matTooltip="Digite o número de telefone e pressione Enter para adicionar assuntos">
+            info
+          </i>
+        </mat-form-field>
+
+
+        <!-- Aniversário -->
+        <mat-form-field>
+          <input matInput readonly [matDatepicker]="picker" placeholder="Aniversário" formControlName="aniversario"
+            (dateChange)="formatDate($event)">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="handleError('aniversario', 'required')">
+            Aniversário é obrigatório
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Gender -->
+        <div class="misc-bottom-padding">
+          <mat-label>Gender:</mat-label>
+          <mat-radio-group aria-label="Select an option" formControlName="genero">
+            <mat-radio-button value="Masculino">Masculino</mat-radio-button>
+            <mat-radio-button value="Feminino">Feminíno</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+    </mat-card>
+
+    <!-- Submit & Reset -->
+    <mat-card>
+      <div class="full-wrapper button-wrapper">
+        <div class="button-wrapper">
+          <button mat-flat-button color="warn">Update</button>
+        </div>
+      </div>
+    </mat-card>
+  </form>
+</div>

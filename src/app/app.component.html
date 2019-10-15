@@ -1,0 +1,44 @@
+<!-- Toolbar -->
+<mat-toolbar color="primary" class="header">
+  <div>Gerenciamento de Matrículas </div>
+  <span class="nav-tool-items">
+    <mat-icon (click)="sidenav.toggle()" class="hamburger">menu</mat-icon>
+  </span>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <!-- Sidenav -->
+  <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
+    [fixedTopGap]>
+    <mat-nav-list>
+        <a mat-list-item routerLinkActive="active" [routerLink]="['/register']">
+          <mat-icon>face</mat-icon> Me Registrar
+        </a>
+      <a mat-list-item routerLinkActive="active" routerLink="/login">
+        <mat-icon>vpn_key</mat-icon> Login
+      </a>
+      <a mat-list-item routerLinkActive="active" [routerLink]="['/logout']">
+        <mat-icon>lock_open</mat-icon> Logout
+      </a>
+      
+      <a mat-list-item routerLinkActive="active" routerLink="/add-estudante">
+        <mat-icon>add</mat-icon> Adicionar Estudante
+      </a>
+      <a mat-list-item routerLinkActive="active" routerLink="/estudantes-list">
+        <mat-icon>format_list_bulleted</mat-icon> Listar Estudantes
+      </a>
+      <hr />
+      <a mat-list-item routerLinkActive="active" routerLink="/add-funcionario">
+        <mat-icon>add</mat-icon> Adicionar Funcionário
+      </a>
+      <a mat-list-item routerLinkActive="active" routerLink="/funcionarios-list">
+        <mat-icon>format_list_bulleted</mat-icon> Listar Funcionários
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Main content -->
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

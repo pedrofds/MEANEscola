@@ -19,7 +19,7 @@ export class ApiService {
   token =
     JSON.parse(localStorage.getItem("funcionariologado")) != null
       ? JSON.parse(localStorage.getItem("funcionariologado"))["token"]
-      : "";
+      : "tokeninvalido";
 
   headers = new HttpHeaders({
     "Content-Type": "application/json",

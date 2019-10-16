@@ -6,6 +6,7 @@ const mongoose = require("mongoose")
 const jwt = require("jsonwebtoken")
 const app = express()
 const cors = require('cors')
+const dbConfig = require('./database/db');
 
 app.set("mongoose", mongoose)
 app.set("jwt", jwt)
@@ -14,7 +15,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
 
-mongoose.connect("mongodb://localhost:27017/meanescola", {
+mongoose.connect(dbConfig.db, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false

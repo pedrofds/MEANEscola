@@ -14,7 +14,6 @@ export class FuncionariosListComponent implements OnInit {
   dataSource: MatTableDataSource<Funcionario>;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   displayedColumns: string[] = [
-    "_id",
     "funcionario_name",
     "funcionario_email",
     "cargo",

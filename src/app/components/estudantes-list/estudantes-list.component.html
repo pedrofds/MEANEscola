@@ -9,10 +9,7 @@
 <div class="container" *ngIf="EstudanteData.length > 0">
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
-      <ng-container matColumnDef="_id">
-        <th mat-header-cell *matHeaderCellDef> Estudante ID </th>
-        <td mat-cell *matCellDef="let element"> {{element._id}} </td>
-      </ng-container>
+      
 
       <ng-container matColumnDef="estudante_name">
         <th mat-header-cell *matHeaderCellDef> Nome </th>

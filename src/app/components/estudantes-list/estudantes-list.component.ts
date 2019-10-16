@@ -14,7 +14,6 @@ export class EstudantesListComponent implements OnInit {
   dataSource: MatTableDataSource<Estudante>;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   displayedColumns: string[] = [
-    "_id",
     "estudante_name",
     "estudante_email",
     "bloco",

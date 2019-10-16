@@ -18,7 +18,7 @@ module.exports = (app) => {
                 console.log(token)
                 
                 if(token == "" || token == "tokeninvalido") {
-                    res.end("Token não foi enviado")
+                    res.end("Token inválido ou nao foi enviado")
                 } else {
                     app.get("jwt").verify(token, "senhasupersecreta", (err, decoded) => {
                             if(err){

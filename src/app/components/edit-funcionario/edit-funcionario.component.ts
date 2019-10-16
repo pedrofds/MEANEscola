@@ -106,7 +106,7 @@ export class EditFuncionarioComponent implements OnInit {
   updateFuncionarioForm() {
     console.log(this.funcionarioForm.value)
     var id = this.actRoute.snapshot.paramMap.get('id');
-    if (window.confirm('Are you sure you want to update?')) {
+    if (window.confirm('Gostaria de alterar os dados?')) {
       this.funcionarioApi.UpdateFuncionario(id, this.funcionarioForm.value).subscribe( res => {
         this.ngZone.run(() => this.router.navigateByUrl('/funcionarios-list'))
       });

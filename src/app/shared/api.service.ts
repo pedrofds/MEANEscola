@@ -171,17 +171,18 @@ export class ApiService {
     return localStorage.getItem("token");
   }
 
-  // Error handling
+  // Tratamento de erros
   errorMgmt(error: HttpErrorResponse) {
     let errorMessage = "";
     if (error.error instanceof ErrorEvent) {
-      // Get client-side error
+      // Obter erro do lado do cliente
       errorMessage = error.error.message;
     } else {
-      // Get server-side error
+      // Obter erro do lado do servidor
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     console.log(errorMessage);
+    window.alert(errorMessage);
     return throwError(errorMessage);
   }
 }

@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  app.use("*", app.middlewares.auth.validarToken)
+  //app.use("*", app.middlewares.auth.validarToken)
   const estudanteController = app.controllers.Estudante   
 
   app.get("/estudante", estudanteController.listar)

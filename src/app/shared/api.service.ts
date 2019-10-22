@@ -156,6 +156,12 @@ export class ApiService {
       map(data => {
         //login sucessfull
         localStorage.setItem("funcionariologado", JSON.stringify(data));
+
+        this.token = data["token"];
+        this.headers = new HttpHeaders({
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + this.token
+        });
         //console.log(localStorage.getItem('funcionariologado'))
       })
       //catchError(this.errorMgmt)
@@ -165,6 +171,11 @@ export class ApiService {
   logout() {
     localStorage.clear();
     localStorage.removeItem("funcionariologado");
+    this.token = null;
+    this.headers = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + this.token
+    });
   }
 
   getToken(): string {
